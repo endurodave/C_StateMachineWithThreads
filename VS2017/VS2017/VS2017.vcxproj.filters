@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Allocator">
+      <UniqueIdentifier>{0e4a2c63-6c5e-40c3-8c3b-179b3dfa75fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Callback">
+      <UniqueIdentifier>{83d86556-bcfa-4e81-93ed-944ac2e5d7a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StateMachine">
+      <UniqueIdentifier>{f325dd99-a13b-49e1-a9e1-f30dc57691ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Port">
+      <UniqueIdentifier>{aa162287-56dc-492e-ae79-de1def0942ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SelfTest">
+      <UniqueIdentifier>{28609b1d-f5c6-44fd-b6b3-b671a0af5fa3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Allocator\fb_allocator.c">
+      <Filter>Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Allocator\x_allocator.c">
+      <Filter>Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Callback\callback.c">
+      <Filter>Callback</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Callback\callback_allocator.c">
+      <Filter>Callback</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SelfTest\CentrifugeTest.c">
+      <Filter>SelfTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Port\Fault.cpp">
+      <Filter>Port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Port\LockGuard.cpp">
+      <Filter>Port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Port\WorkerThreadStd.cpp">
+      <Filter>Port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\StateMachine\sm_allocator.c">
+      <Filter>StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\StateMachine\StateMachine.c">
+      <Filter>StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SelfTest\SelfTestEngine.c">
+      <Filter>SelfTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Port\Timer.c">
+      <Filter>Port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SelfTest\PressureTest.c">
+      <Filter>SelfTest</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Allocator\fb_allocator.h">
+      <Filter>Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Allocator\x_allocator.h">
+      <Filter>Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Callback\callback.h">
+      <Filter>Callback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Callback\callback_allocator.h">
+      <Filter>Callback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SelfTest\CentrifugeTest.h">
+      <Filter>SelfTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\DataTypes.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\Fault.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\LockGuard.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\ThreadMsg.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\UserMsgs.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\WorkerThreadStd.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\StateMachine\sm_allocator.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\StateMachine\StateMachine.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SelfTest\SelfTestEngine.h">
+      <Filter>SelfTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Port\Timer.h">
+      <Filter>Port</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SelfTest\PressureTest.h">
+      <Filter>SelfTest</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
