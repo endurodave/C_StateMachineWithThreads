@@ -1,11 +1,7 @@
-#include "stdafx.h"
-#include "callback.h"
 #include "SelfTestEngine.h"
 #include "WorkerThreadStd.h"
 #include "Timer.h"
 #include "fb_allocator.h"
-#include <iostream>
-#include <string.h>
 
 using namespace std;
 
@@ -15,7 +11,6 @@ BOOL selfTestEngineCompleted = FALSE;
 // Status callback from SelfTestEngine
 void STE_StatusCallback(const SelfTestStatus* status, void* userData)
 {
-    // Output status message to the console "user interface"
     printf("STE_StatusCallback %d\n", status->testActive);
 }
 
