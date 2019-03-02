@@ -91,6 +91,7 @@ ENTRY_DEFINE(Idle, NoEventData)
     printf("%s EN_Idle\n", self->name);
     pressureTestObj.pressure = 0;
 
+    // Stop timer callbacks
     TMR_Stop(PRE_PollCallback, DispatchCallbackThread1);
 }
 

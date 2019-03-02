@@ -12,18 +12,21 @@ using namespace std;
 // Simple flag to exit main loop
 BOOL selfTestEngineCompleted = FALSE;
 
+// Status callback from SelfTestEngine
 void STE_StatusCallback(const SelfTestStatus* status, void* userData)
 {
     // Output status message to the console "user interface"
     printf("STE_StatusCallback %d\n", status->testActive);
 }
 
+// Completed callback from SelfTestEngine
 void STE_CompletedCallback(void* data, void* userData)
 {
     printf("STE_CompletedCallback\n");
     selfTestEngineCompleted = TRUE;
 }
 
+// Failed callback from SelfTestEngine
 void STE_FailedCallback(void* data, void* userData)
 {
     printf("STE_FailedCallback\n");
@@ -39,15 +42,15 @@ int main()
     STE_Init();
     CreateThreads();
 
-    // Register for self test engine callbacks on DispatchCallbackThread2
+    // Register for SelfTestEngine callbacks on DispatchCallbackThread2
     CB_Register(STE_StatusCb, STE_StatusCallback, DispatchCallbackThread2, NULL);
     CB_Register(STE_CompletedCb, STE_CompletedCallback, DispatchCallbackThread2, NULL);
     CB_Register(STE_FailedCb, STE_FailedCallback, DispatchCallbackThread2, NULL);
 
-    // Start self-test engine
+    // Start SelfTestEngine
     SM_Event(SelfTestEngineSM, STE_Start, NULL);
 
-    // Wait for self-test engine to complete 
+    // Wait for SelfTestEngine to complete 
     while (!selfTestEngineCompleted)
         this_thread::sleep_for(1s);
 

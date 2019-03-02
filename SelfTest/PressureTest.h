@@ -9,6 +9,7 @@
 extern "C" {
 #endif
 
+// Declare public callback interfaces
 CB_DECLARE(PRE_CompletedCb, void*)
 CB_DECLARE(PRE_FailedCb, void*)
 

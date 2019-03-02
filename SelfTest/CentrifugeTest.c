@@ -117,6 +117,7 @@ ENTRY_DEFINE(Idle, NoEventData)
     printf("%s EN_Idle\n", self->name);
     centrifugeTestObj.speed = 0;
 
+    // Stop timer callbacks
     TMR_Stop(CFG_PollCallback, DispatchCallbackThread1);
 }
 
@@ -177,7 +178,7 @@ EXIT_DEFINE(WaitForAcceleration)
 {
     printf("%s EX_WaitForAcceleration\n", self->name);
 
-    // Acceleration over, stop polling
+    // Acceleration over, stop timer polling
     TMR_Stop(CFG_PollCallback, DispatchCallbackThread1);
 }
 
@@ -203,7 +204,7 @@ EXIT_DEFINE(WaitForDeceleration)
 {
     printf("%s EX_WaitForDeceleration\n", self->name);
 
-    // Deceleration over, stop polling
+    // Deceleration over, stop timer polling
     TMR_Stop(CFG_PollCallback, DispatchCallbackThread1);
 }
 
