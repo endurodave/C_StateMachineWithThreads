@@ -5,19 +5,19 @@
 
 typedef struct
 {
-    INT cbIdx;              
+    INT cbIdx;              // Callback array index
     DWORD timeout;	    	// in ticks
     DWORD expireTime;		// in ticks
-    BOOL enabled;
+    BOOL enabled;           // TRUE if timer enabled
 } TMR_Obj;
 
 // Maximum number of active timers
 #define MAX_TIMERS  5
 
-static TMR_Obj timerObjs[MAX_TIMERS];
+static TMR_Obj timerObjs[MAX_TIMERS]; // One TMR_Obj per callback
 static LOCK_HANDLE _hLock;
 
-// Create async callback
+// Create async callbacks
 CB_DECLARE(TMR_ExpiredCb, const void*)
 CB_DEFINE(TMR_ExpiredCb, const void*, 0, MAX_TIMERS)
 
@@ -43,15 +43,16 @@ BOOL TMR_Start(CB_CallbackFuncType cbFunc, CB_DispatchCallbackFuncType cbDispatc
         // Search for the registered data within the array
         for (size_t idx = 0; idx < MAX_TIMERS; idx++)
         {
-            // Get pointer to an element within the multicast callback array 
+            // Get pointer to the CB_Info element within the multicast callback array 
             // created by CB_DEFINE macro
-            CB_Info* info = &TMR_ExpiredCbMulticast[idx];
+            const CB_Info* info = CB_GetCbInfo(TMR_ExpiredCb, idx);
+            ASSERT_TRUE(info != NULL);
 
             // Does caller's callback match?
             if (info->cbFunc == cbFunc &&
                 info->cbDispatchFunc == cbDispatchFunc)
             {
-                // Ensure we are not overwriting a enabled timer
+                // Ensure we are not overwriting an enabled timer
                 ASSERT_TRUE(timerObjs[idx].enabled == FALSE);
 
                 // Save timer data into array at same index as callback
@@ -77,9 +78,10 @@ void TMR_Stop(CB_CallbackFuncType cbFunc, CB_DispatchCallbackFuncType cbDispatch
     // Search for the registered data within the array
     for (size_t idx = 0; idx < MAX_TIMERS; idx++)
     {
-        // Get pointer to an element within the multicast callback array 
+        // Get pointer to CB_Info element within the multicast callback array 
         // created by CB_DEFINE macro
-        CB_Info* info = &TMR_ExpiredCbMulticast[idx];
+        const CB_Info* info = CB_GetCbInfo(TMR_ExpiredCb, idx);
+        ASSERT_TRUE(info != NULL);
 
         // Does caller's callback match?
         if (info->cbFunc == cbFunc &&
@@ -124,8 +126,16 @@ static void TMR_CheckExpired(TMR_Obj* timer)
     // Ensure index is within range
     ASSERT_TRUE(timer->cbIdx < MAX_TIMERS);
 
-    // Call the client's expired callback function asynchronously
-    _CB_Dispatch(&TMR_ExpiredCbMulticast[timer->cbIdx], 1, NULL, 0);
+    // Get pointer to CB_Info element within the multicast callback array 
+    // created by CB_DEFINE macro
+    const CB_Info* info = CB_GetCbInfo(TMR_ExpiredCb, timer->cbIdx);
+    ASSERT_TRUE(info != NULL);
+
+    // Call the client's expired callback function asynchronously.
+    // Typically don't call _CB_Dispatch directly, but in this case
+    // we want to dispatch one callback that expired; not all timer 
+    // callbacks.
+    _CB_Dispatch(info, 1, NULL, 0);
 }
 
 void TMR_ProcessTimers()

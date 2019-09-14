@@ -105,6 +105,7 @@ typedef struct
 #define CB_Invoke(cbName, cbArg)                                 cbName##_Invoke(cbArg)
 #define CB_InvokeArray(cbName, cbArg, cbNum, cbSize)             cbName##_InvokeArray(cbArg, cbNum, cbSize)
 #define CB_IsRegistered(cbName, cbFunc, cbDispatchFunc)          cbName##_IsRegistered(cbFunc, cbDispatchFunc)
+#define CB_GetCbInfo(cbName, cbIdx)                              cbName##_GetCbInfo(cbIdx)
 
 // Declare type-safe callback wrapper functions.
 // cbName - name your callback with any unique name
@@ -116,7 +117,8 @@ typedef struct
     BOOL cbName##_IsRegistered(cbName##CallbackFuncType cbFunc, CB_DispatchCallbackFuncType cbDispatchFunc); \
     BOOL cbName##_Unregister(cbName##CallbackFuncType cbFunc, CB_DispatchCallbackFuncType cbDispatchFunc); \
     BOOL cbName##_Invoke(cbArg cbData); \
-    BOOL cbName##_InvokeArray(cbArg cbData, size_t num, size_t size);
+    BOOL cbName##_InvokeArray(cbArg cbData, size_t num, size_t size); \
+    const CB_Info* cbName##_GetCbInfo(unsigned int cbIdx);
 
 // Define type-safe callback wrapper functions.
 // cbName - name your callback with any unique name
@@ -140,7 +142,11 @@ typedef struct
     } \
     BOOL cbName##_InvokeArray(cbArg cbData, size_t num, size_t size) { \
         return _CB_Dispatch(&cbName##Multicast[0], cbMax, cbData, num * size); \
-    }
+    } \
+    const CB_Info* cbName##_GetCbInfo(unsigned int cbIdx) { \
+        if (cbIdx >= cbMax) return NULL; \
+        return &cbName##Multicast[cbIdx]; \
+    } 
 
 // Initialization function called one time at startup
 void CB_Init(void);
