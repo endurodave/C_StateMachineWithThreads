@@ -164,7 +164,7 @@ BOOL _CB_IsAdded(CB_Info* cbInfo, size_t cbInfoLen, CB_CallbackFuncType cbFunc,
     CB_DispatchCallbackFuncType cbDispatchFunc);
 BOOL _CB_RemoveCallback(CB_Info* cbInfo, size_t cbInfoLen, CB_CallbackFuncType cbFunc,
     CB_DispatchCallbackFuncType cbDispatchFunc);
-BOOL _CB_Dispatch(CB_Info* cbInfo, size_t cbInfoLen, const void* cbData, size_t cbDataSize);
+BOOL _CB_Dispatch(const CB_Info* cbInfo, size_t cbInfoLen, const void* cbData, size_t cbDataSize);
 
 #ifdef __cplusplus
 }

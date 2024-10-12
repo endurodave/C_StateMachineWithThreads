@@ -110,17 +110,17 @@ static void TMR_CheckExpired(TMR_Obj* timer)
         return;
 
     // Has the timer expired?
-    if (TMR_Difference(timer->expireTime, GetTickCount()) < timer->timeout)
+    if (TMR_Difference(timer->expireTime, clock()) < timer->timeout)
         return;
 
     // Increment the timer to the next expiration
     timer->expireTime += timer->timeout;
 
     // Is the timer already expired after we incremented above?
-    if (TMR_Difference(timer->expireTime, GetTickCount()) > timer->timeout)
+    if (TMR_Difference(timer->expireTime, clock()) > timer->timeout)
     {
         // The timer has fallen behind so set time expiration further forward.
-        timer->expireTime = GetTickCount();
+        timer->expireTime = clock();
     }
 
     // Ensure index is within range
@@ -150,3 +150,4 @@ void TMR_ProcessTimers()
 
     LK_UNLOCK(_hLock);
 }
+

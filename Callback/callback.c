@@ -1,6 +1,7 @@
 #include "callback.h"
 #include "DataTypes.h"
 #include "Fault.h"
+#include <string.h>
 
 // Define USE_LOCK to use the default lock implementation
 #define USE_LOCKS
@@ -29,12 +30,12 @@
     #define XFREE(ptr)      free(ptr)
 #endif
 
-static BOOL CB_DispatchCallback(CB_Info* cbInfo, const void* cbData, size_t cbDataSize);
+static BOOL CB_DispatchCallback(const CB_Info* cbInfo, const void* cbData, size_t cbDataSize);
 
 //----------------------------------------------------------------------------
 // CB_DispatchCallback
 //----------------------------------------------------------------------------
-static BOOL CB_DispatchCallback(CB_Info* cbInfo, const void* cbData, size_t cbDataSize)
+static BOOL CB_DispatchCallback(const CB_Info* cbInfo, const void* cbData, size_t cbDataSize)
 {
     BOOL success = FALSE;
     BOOL dispatchSuccess = FALSE;
@@ -239,7 +240,7 @@ BOOL _CB_IsAdded(CB_Info* cbInfo,
 //----------------------------------------------------------------------------
 // _CB_Dispatch
 //----------------------------------------------------------------------------
-BOOL _CB_Dispatch(CB_Info* cbInfo, size_t cbInfoLen, const void* cbData, 
+BOOL _CB_Dispatch(const CB_Info* cbInfo, size_t cbInfoLen, const void* cbData, 
     size_t cbDataSize)
 {
     BOOL invoked = FALSE;
