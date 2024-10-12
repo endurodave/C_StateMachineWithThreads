@@ -15,6 +15,31 @@ A framework combining C language state machines and multicast asynchronous callb
 
 <p>A CMake build offers easy experimentation in Windows, Linux and other platforms. No platform specific API's are utilized so any compiler toolchain will suffice.</p>
 
+Related articles:
+
+<ul>
+    <li><a href="https://github.com/endurodave/C_StateMachine">State Machine Design in C</a> - by David Lafreniere</li>
+    <li><a href="https://github.com/endurodave/C_AsyncCallback">Asynchronous Callbacks in C</a> - by David Lafreniere</li>
+	<li><a href="https://github.com/endurodave/C_Allocator">A Fixed Block Allocator in C</a> - by David Lafreniere</li>
+    <li><a href="https://github.com/endurodave/StateMachine">State Machine Design in C++</a> - by David Lafreniere</li>
+</ul>
+
+<h2>Project Build</h2>
+
+<a href="https://www.cmake.org">CMake</a> is used to create the build files. CMake is free and open-source software. Windows, Linux and other toolchains are supported. Example CMake console commands executed inside the project root directory: 
+
+<h3>Windows Visual Studio</h3>
+
+<code>cmake -G "Visual Studio 17 2022" -A Win32 -B ../C_StateMachineWithThreadsBuild -S .</code>
+
+After executed, open the Visual Studio project from within the <code>C_StateMachineWithThreadsBuild</code> directory.
+
+<h3>Linux Make</h3>
+
+<code>cmake -G "Unix Makefiles" -B ../C_StateMachineWithThreadsBuild -S .</code>
+
+After executed, build the software from within the C_StateMachineWithThreadsBuild directory using the command <code>make</code>. Run the console app using <code>./C_StateMachineWithThreadsApp</code>.
+
 <h2>SelfTestEngine</h2>
 
 <p><code>SelfTestEngine</code> is thread-safe and the main point of contact for client&rsquo;s utilizing the self-test subsystem. <code>CentrifugeTest</code> and <code>PressureTest</code> are members of <code>SelfTestEngine</code>. <code>SelfTestEngine</code> is responsible for sequencing the individual self-tests in the correct order as shown in the state diagram below. &nbsp;</p>
