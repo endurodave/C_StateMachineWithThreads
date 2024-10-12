@@ -3,6 +3,8 @@
 #include "Timer.h"
 #include "fb_allocator.h"
 
+// @see https://github.com/endurodave/C_StateMachineWithThreads
+
 using namespace std;
 
 // Simple flag to exit main loop

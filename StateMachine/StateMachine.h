@@ -80,6 +80,8 @@ typedef struct SM_StateStructEx
 // Public functions
 #define SM_Event(_smName_, _eventFunc_, _eventData_) \
     _eventFunc_(&_smName_##Obj, _eventData_)
+#define SM_Get(_smName_, _getFunc_) \
+    _getFunc_(&_smName_##Obj)
 
 // Protected functions
 #define SM_InternalEvent(_newState_, _eventData_) \
@@ -105,6 +107,12 @@ void _SM_StateEngineEx(SM_StateMachine* self, const SM_StateMachineConst* selfCo
 
 #define EVENT_DEFINE(_eventFunc_, _eventData_) \
     void _eventFunc_(SM_StateMachine* self, _eventData_* pEventData)
+
+#define GET_DECLARE(_getFunc_, _getData_) \
+    _getData_ _getFunc_(SM_StateMachine* self);
+
+#define GET_DEFINE(_getFunc_, _getData_) \
+    _getData_ _getFunc_(SM_StateMachine* self)
 
 #define STATE_DECLARE(_stateFunc_, _eventData_) \
     static void ST_##_stateFunc_(SM_StateMachine* self, _eventData_* pEventData);
@@ -134,7 +142,7 @@ void _SM_StateEngineEx(SM_StateMachine* self, const SM_StateMachineConst* selfCo
     static const SM_StateStruct _smName_##StateMap[] = { 
 
 #define STATE_MAP_ENTRY(_stateFunc_) \
-    { _stateFunc_ },
+    { (SM_StateFunc)_stateFunc_ },
 
 #define END_STATE_MAP(_smName_) \
     }; \
@@ -146,10 +154,10 @@ void _SM_StateEngineEx(SM_StateMachine* self, const SM_StateMachineConst* selfCo
     static const SM_StateStructEx _smName_##StateMap[] = { 
 
 #define STATE_MAP_ENTRY_EX(_stateFunc_) \
-    { _stateFunc_, NULL, NULL, NULL },
+    { (SM_StateFunc)_stateFunc_, NULL, NULL, NULL },
 
 #define STATE_MAP_ENTRY_ALL_EX(_stateFunc_, _guardFunc_, _entryFunc_, _exitFunc_) \
-    { _stateFunc_, _guardFunc_, _entryFunc_, _exitFunc_ },
+    { (SM_StateFunc)_stateFunc_, (SM_GuardFunc)_guardFunc_, (SM_EntryFunc)_entryFunc_, (SM_ExitFunc)_exitFunc_ },
 
 #define END_STATE_MAP_EX(_smName_) \
     }; \
