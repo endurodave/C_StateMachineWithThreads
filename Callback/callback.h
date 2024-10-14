@@ -1,4 +1,5 @@
-// https://www.codeproject.com/Articles/1272894/Asynchronous-Multicast-Callbacks-in-C
+// https://github.com/endurodave/C_AsyncCallback
+// David Lafreniere
 //
 // The callback module implements synchronous or asynchronous function callbacks.
 // A publisher exposes a callback interface using CB_DECLARE and CB_DEFINE macros. 

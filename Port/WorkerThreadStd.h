@@ -1,4 +1,5 @@
-// https://www.codeproject.com/Articles/1169105/Cplusplus-std-thread-Event-Loop-with-Message-Queue
+// https://github.com/endurodave/StdWorkerThread
+// David Lafreniere
 
 #ifndef _THREAD_STD_H
 #define _THREAD_STD_H

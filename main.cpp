@@ -4,6 +4,7 @@
 #include "fb_allocator.h"
 
 // @see https://github.com/endurodave/C_StateMachineWithThreads
+// David Lafreniere
 
 using namespace std;
 
