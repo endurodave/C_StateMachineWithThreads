@@ -1,7 +1,21 @@
 # C Language State Machine with Threads
 A framework combining C language state machines and multicast asynchronous callbacks.
 
-<h2>Introduction</h2>
+# Table of Contents
+
+- [C Language State Machine with Threads](#c-language-state-machine-with-threads)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Project Build](#project-build)
+  - [Windows Visual Studio](#windows-visual-studio)
+  - [Linux Make](#linux-make)
+- [SelfTestEngine](#selftestengine)
+- [CentrifugeTest](#centrifugetest)
+- [Timer](#timer)
+- [Run-Time](#run-time)
+- [Conclusion](#conclusion)
+
+# Introduction
 
 <p>A software-based Finite State Machines (FSM) is an implementation method used to decompose a design into states and events. Simple embedded devices with no operating system employ single threading such that the state machines run on a single &ldquo;thread&rdquo;. More complex systems use multithreading to divvy up the processing.</p>
 
@@ -24,23 +38,23 @@ Related articles:
     <li><a href="https://github.com/endurodave/StateMachine">State Machine Design in C++</a> - by David Lafreniere</li>
 </ul>
 
-<h2>Project Build</h2>
+# Project Build
 
 <a href="https://www.cmake.org">CMake</a> is used to create the build files. CMake is free and open-source software. Windows, Linux and other toolchains are supported. Example CMake console commands executed inside the project root directory: 
 
-<h3>Windows Visual Studio</h3>
+## Windows Visual Studio
 
 <code>cmake -G "Visual Studio 17 2022" -A Win32 -B ../C_StateMachineWithThreadsBuild -S .</code>
 
 After executed, open the Visual Studio project from within the <code>C_StateMachineWithThreadsBuild</code> directory.
 
-<h3>Linux Make</h3>
+## Linux Make
 
 <code>cmake -G "Unix Makefiles" -B ../C_StateMachineWithThreadsBuild -S .</code>
 
 After executed, build the software from within the C_StateMachineWithThreadsBuild directory using the command <code>make</code>. Run the console app using <code>./C_StateMachineWithThreadsApp</code>.
 
-<h2>SelfTestEngine</h2>
+# SelfTestEngine
 
 <p><code>SelfTestEngine</code> is thread-safe and the main point of contact for client&rsquo;s utilizing the self-test subsystem. <code>CentrifugeTest</code> and <code>PressureTest</code> are members of <code>SelfTestEngine</code>. <code>SelfTestEngine</code> is responsible for sequencing the individual self-tests in the correct order as shown in the state diagram below. &nbsp;</p>
 
@@ -110,7 +124,7 @@ void STE_Init()
 
 <p>One might ask why the state machines use asynchronous callbacks. If the state machines are on the same thread, why not use a normal, synchronous callback instead? The problem to prevent is a callback into a currently executing state machine, that is, the call stack wrapping back around into the same class instance. For example, the following call sequence should be prevented: <code>SelfTestEngine</code> calls <code>CentrifugeTest</code> calls back <code>SelfTestEngine</code>. An asynchronous callback allows the stack to unwind and prevents this unwanted behavior.</p>
 
-<h2>CentrifugeTest</h2>
+# CentrifugeTest
 
 <p>The <code>CentrifugeTest</code> state machine diagram show below implements the centrifuge self-test described in &quot;<a href="https://github.com/endurodave/C_StateMachine"><b>State Machine Design in C</b></a>&quot;. The difference here is that the <code>Timer</code> class is used to provide <code>Poll</code> events via asynchronous callbacks.</p>
 
@@ -118,7 +132,7 @@ void STE_Init()
 
 <p style="text-align: center"><strong>Figure 3: CentrifugeTest State Machine</strong></p>
 
-<h2>Timer</h2>
+# Timer
 
 <p>The <code>Timer</code> class provides a common mechanism to receive function callbacks by registering with <code>Expired</code>. <code>TMR_Start()</code> starts the callbacks at a particular interval. <code>TMR_Stop()</code> stops the callbacks.</p>
 
@@ -131,7 +145,7 @@ void TMR_Stop(CB_CallbackFuncType cbFunc, CB_DispatchCallbackFuncType cbDispatch
 // Called periodically by a thread to process all timers
 void TMR_ProcessTimers();</pre>
 
-<h2>Run-Time</h2>
+# Run-Time
 
 <p>The program&rsquo;s <code>main()</code> function is shown below. It creates the threads, registers for callbacks from <code>SelfTestEngine</code>, then calls <code>STE_Start()</code> to start the self-tests.</p>
 
@@ -168,7 +182,7 @@ int main()
     return 0;
 }</pre>
 
-<h2>Conclusion</h2>
+# Conclusion
 
 <p>The C state machine and asynchronous callbacks implementations can be used separately. Each is useful unto itself. However, combining the two offers a novel framework for multithreaded state-driven application development. The article has shown how to coordinate the behavior of state machines when multiple threads are used,&nbsp;which may not be entirely obvious when looking at simplistic, single threaded examples.</p>
 
