@@ -59,7 +59,7 @@ private:
 	std::mutex m_mutex;
 	std::condition_variable m_cv;
     std::atomic<bool> m_timerExit;
-	const CHAR* THREAD_NAME;
+	const std::string THREAD_NAME;
 };
 
 #endif 
