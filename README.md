@@ -1,4 +1,10 @@
+![License MIT](https://img.shields.io/github/license/BehaviorTree/BehaviorTree.CPP?color=blue)
+[![conan Ubuntu](https://github.com/endurodave/C_StateMachineWithThreads/actions/workflows/cmake_ubuntu.yml/badge.svg)](https://github.com/endurodave/C_StateMachineWithThreads/actions/workflows/cmake_ubuntu.yml)
+[![conan Ubuntu](https://github.com/endurodave/C_StateMachineWithThreads/actions/workflows/cmake_clang.yml/badge.svg)](https://github.com/endurodave/C_StateMachineWithThreads/actions/workflows/cmake_clang.yml)
+[![conan Windows](https://github.com/endurodave/C_StateMachineWithThreads/actions/workflows/cmake_windows.yml/badge.svg)](https://github.com/endurodave/C_StateMachineWithThreads/actions/workflows/cmake_windows.yml)
+
 # C Language State Machine with Threads
+
 A framework combining C language state machines and multicast asynchronous callbacks.
 
 # Table of Contents
