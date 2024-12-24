@@ -11,6 +11,7 @@
 #include <mutex>
 #include <atomic>
 #include <condition_variable>
+#include <string>
 
 // C language interface to callback dispatch functions
 extern "C" void CreateThreads(void);
@@ -24,7 +25,7 @@ class WorkerThread
 {
 public:
 	/// Constructor
-	WorkerThread(const CHAR* threadName);
+	WorkerThread(const std::string& threadName);
 
 	/// Destructor
 	~WorkerThread();

@@ -55,7 +55,7 @@ extern "C" BOOL DispatchCallbackThread2(const CB_CallbackMsg* cbMsg)
 //----------------------------------------------------------------------------
 // WorkerThread
 //----------------------------------------------------------------------------
-WorkerThread::WorkerThread(const CHAR* threadName) : m_thread(0), m_timerExit(false), THREAD_NAME(threadName)
+WorkerThread::WorkerThread(const std::string& threadName) : m_thread(0), m_timerExit(false), THREAD_NAME(threadName)
 {
 }
 
