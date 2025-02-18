@@ -35,13 +35,13 @@ A framework combining C language state machines and multicast asynchronous callb
 
 <p>A CMake build offers easy experimentation in Windows, Linux and other platforms. No platform specific API's are utilized so any compiler toolchain will suffice.</p>
 
-Related articles:
+Related repositories:
 
 <ul>
-    <li><a href="https://github.com/endurodave/C_StateMachine">State Machine Design in C</a> - by David Lafreniere</li>
-    <li><a href="https://github.com/endurodave/C_AsyncCallback">Asynchronous Callbacks in C</a> - by David Lafreniere</li>
-	<li><a href="https://github.com/endurodave/C_Allocator">A Fixed Block Allocator in C</a> - by David Lafreniere</li>
-    <li><a href="https://github.com/endurodave/StateMachine">State Machine Design in C++</a> - by David Lafreniere</li>
+    <li><a href="https://github.com/endurodave/C_StateMachine">State Machine Design in C</a></li>
+    <li><a href="https://github.com/endurodave/C_AsyncCallback">Asynchronous Callbacks in C</a></li>
+	<li><a href="https://github.com/endurodave/C_Allocator">A Fixed Block Allocator in C</a></li>
+    <li><a href="https://github.com/endurodave/StateMachine">State Machine Design in C++</a></li>
 </ul>
 
 # Project Build
