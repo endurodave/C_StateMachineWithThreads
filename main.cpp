@@ -50,7 +50,7 @@ int main()
 
     // Wait for SelfTestEngine to complete 
     while (!selfTestEngineCompleted)
-        this_thread::sleep_for(1s);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
 
     // Cleanup before exit
     ExitThreads();
@@ -58,7 +58,7 @@ int main()
     TMR_Term();
     ALLOC_Term();
 
-    this_thread::sleep_for(1s);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
     return 0;
 }
