@@ -12,9 +12,8 @@ A framework combining C language state machines and multicast asynchronous callb
 - [C Language State Machine with Threads](#c-language-state-machine-with-threads)
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-- [Project Build](#project-build)
-  - [Windows Visual Studio](#windows-visual-studio)
-  - [Linux Make](#linux-make)
+  - [Related repositories](#related-repositories)
+- [Getting Started](#getting-started)
 - [SelfTestEngine](#selftestengine)
 - [CentrifugeTest](#centrifugetest)
 - [Timer](#timer)
@@ -33,32 +32,24 @@ A framework combining C language state machines and multicast asynchronous callb
 
 <p>The primary focus is on how to combine the state machine and asynchronous callbacks into a single framework.</p>
 
-<p>A CMake build offers easy experimentation in Windows, Linux and other platforms. No platform specific API's are utilized so any compiler toolchain will suffice.</p>
-
-Related repositories:
+## Related repositories
 
 <ul>
-    <li><a href="https://github.com/endurodave/C_StateMachine">State Machine Design in C</a></li>
-    <li><a href="https://github.com/endurodave/C_AsyncCallback">Asynchronous Callbacks in C</a></li>
-	<li><a href="https://github.com/endurodave/C_Allocator">A Fixed Block Allocator in C</a></li>
-    <li><a href="https://github.com/endurodave/StateMachine">State Machine Design in C++</a></li>
+	<li><a href="https://github.com/endurodave/C_StateMachine">State Machine Design in C</a> - A compact C language finite state machine (FSM) implementation.</li>
+    <li><a href="https://github.com/endurodave/C_AsyncCallback">Asynchronous Callbacks in C</a> - Asynchronous callbacks library in C.</li>
+	<li><a href="https://github.com/endurodave/C_Allocator">A Fixed Block Allocator in C</a> - A C language fixed block memory allocator.</li>
+    <li><a href="https://github.com/endurodave/StateMachine">State Machine Design in C++</a> A C++ finite state machine (FSM) implementation.</li>
+    <li><a href="https://github.com/endurodave/StateMachineWithThreads">C++ State Machine with Threads</a> - A C++ state machine integrated with an asynchronous callback library.</li>
 </ul>
 
-# Project Build
+# Getting Started
 
-<a href="https://www.cmake.org">CMake</a> is used to create the build files. CMake is free and open-source software. Windows, Linux and other toolchains are supported. Example CMake console commands executed inside the project root directory: 
+[CMake](https://cmake.org/) is used to create the project build files on any Windows or Linux machine. 
 
-## Windows Visual Studio
-
-<code>cmake -G "Visual Studio 17 2022" -A Win32 -B ../C_StateMachineWithThreadsBuild -S .</code>
-
-After executed, open the Visual Studio project from within the <code>C_StateMachineWithThreadsBuild</code> directory.
-
-## Linux Make
-
-<code>cmake -G "Unix Makefiles" -B ../C_StateMachineWithThreadsBuild -S .</code>
-
-After executed, build the software from within the C_StateMachineWithThreadsBuild directory using the command <code>make</code>. Run the console app using <code>./C_StateMachineWithThreadsApp</code>.
+1. Clone the repository.
+2. From the repository root, run the following CMake command:   
+   `cmake -B Build .`
+3. Build and run the project within the `Build` directory. 
 
 # SelfTestEngine
 
